@@ -1,0 +1,69 @@
+policy_dq/
+  src/policy_dq/
+    __init__.py
+    cli.py
+    models.py
+    parsers/
+    validators/
+    reporters/
+    rules/
+    mcp/
+  tests/
+    unit/
+    integration/
+  sample_data/
+  sample_rules/
+  .kiro/
+    specs/
+    steering/
+    hooks/
+  README.md
+  DECISIONS.md
+  KIRO_USAGE.md
+
+
+
+
+python -m src.policy_dq.cli validate sample_data/clean_customers.json --rules sample_rules/customer_validation.json --output-dir ./reports
+python -m src.policy_dq.cli validate sample_data/customers_with_issues.json --rules sample_rules/customer_validation.json --output-dir ./reports
+
+python -m src.policy_dq.cli validate sample_data/clean_customers.json --rules sample_rules/customer_validation.yaml --output-dir ./reports
+python -m src.policy_dq.cli validate sample_data/customers_with_issues.json --rules sample_rules/customer_validation.yaml --output-dir ./reports
+
+
+
+python -m src.policy_dq.cli validate sample_data/clean_customers.csv --rules sample_rules/customer_validation.json --output-dir ./reports
+python -m src.policy_dq.cli validate sample_data/customers_with_issues.csv --rules sample_rules/customer_validation.json --output-dir ./reports
+
+python -m src.policy_dq.cli validate sample_data/clean_customers.csv --rules sample_rules/customer_validation.yaml --output-dir ./reports
+python -m src.policy_dq.cli validate sample_data/customers_with_issues.csv --rules sample_rules/customer_validation.yaml --output-dir ./reports
+
+python -m src.policy_dq.cli -v validate sample_data/clean_customers.csv --config sample_rules/mcp_config.json
+python -m src.policy_dq.cli -v validate sample_data/customers_with_issues.csv --config sample_rules/mcp_config.json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Test MCP library
+python -c "import mcp; print('MCP available')"
+
+# Test with local rules first
+python -m src.policy_dq.cli validate data.json --rules sample_rules/customer_validation.yaml
+
+# Verbose MCP validation
+python -m src.policy_dq.cli -v validate data.json --config mcp_config.json
+
+
+
+
+cmd /c "venv\Scripts\activate.bat && python -m pytest --version"
