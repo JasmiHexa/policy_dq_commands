@@ -1,25 +1,11 @@
-policy_dq/
-  src/policy_dq/
-    __init__.py
-    cli.py
-    models.py
-    parsers/
-    validators/
-    reporters/
-    rules/
-    mcp/
-  tests/
-    unit/
-    integration/
-  sample_data/
-  sample_rules/
-  .kiro/
-    specs/
-    steering/
-    hooks/
-  README.md
-  DECISIONS.md
-  KIRO_USAGE.md
+# Generate interactive HTML report
+python -m pytest --cov=src/policy_dq --cov-report=html
+
+# Open the report (Windows)
+start htmlcov\index.html
+# Generate all report types
+python -m pytest --cov=src/policy_dq --cov-report=term-missing --cov-report=html --cov-report=xml
+
 
 
 
